@@ -1,0 +1,1858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ICMIIM 2026 – International Conference on Material Insights and Intelligent Modelling</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #0d1f3c;
+    --navy-light: #1a3260;
+    --gold: #c9993b;
+    --gold-light: #e8c068;
+    --gold-pale: #fdf6e8;
+    --cream: #f9f6f0;
+    --text: #1a1a2e;
+    --text-muted: #555e75;
+    --white: #ffffff;
+    --border: #e0d9cc;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ── LOGO BAR ── */
+  .logo-bar {
+    background: var(--navy);
+    padding: 1.1rem 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    border-bottom: 1px solid rgba(201,153,59,0.25);
+  }
+
+  .logo-placeholder {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    gap: 4px;
+  }
+
+  .logo-placeholder span {
+    font-size: 0.58rem;
+    color: rgba(201,153,59,0.7);
+    text-align: center;
+    line-height: 1.3;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0 6px;
+  }
+
+  .logo-placeholder .logo-icon {
+    font-size: 1.6rem;
+    line-height: 1;
+  }
+
+  .logo-bar-text {}
+
+  .logo-conf-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1.3;
+    margin-bottom: 0.2rem;
+  }
+
+  .logo-conf-short {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    padding: 2px 10px;
+    border-radius: 2px;
+    margin-right: 0.6rem;
+  }
+
+  .logo-conf-meta {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.55);
+    display: inline;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--navy);
+    border-bottom: 3px solid var(--gold);
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+    height: 52px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.35);
+    gap: 0;
+  }
+
+  /* Hamburger button */
+  .nav-hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    padding: 6px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+
+  .nav-hamburger:hover { background: rgba(201,153,59,0.15); }
+
+  .nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--gold-light);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Dropdown menu panel */
+  .nav-dropdown {
+    position: absolute;
+    top: 52px;
+    left: 0;
+    width: 240px;
+    background: var(--navy);
+    border-right: 3px solid var(--gold);
+    border-bottom: 3px solid var(--gold);
+    border-bottom-right-radius: 8px;
+    box-shadow: 4px 6px 24px rgba(0,0,0,0.4);
+    display: none;
+    flex-direction: column;
+    z-index: 999;
+    padding: 0.5rem 0;
+  }
+
+  .nav-dropdown.open { display: flex; }
+
+  .nav-dropdown a {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.75rem 1.4rem;
+    color: rgba(255,255,255,0.82);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: background 0.15s, color 0.15s;
+    border-left: 3px solid transparent;
+  }
+
+  .nav-dropdown a:hover,
+  .nav-dropdown a.active-link {
+    background: rgba(201,153,59,0.12);
+    color: var(--gold-light);
+    border-left-color: var(--gold);
+  }
+
+  .nav-dropdown a .nav-num {
+    font-size: 0.68rem;
+    color: rgba(201,153,59,0.6);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    min-width: 18px;
+  }
+
+  .nav-title {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold-light);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-left: 1rem;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-conf-badge {
+    margin-left: auto;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    border: 1px solid rgba(201,153,59,0.4);
+    padding: 2px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  /* ── SLIDESHOW ── */
+  .slideshow {
+    position: relative;
+    height: 540px;
+    overflow: hidden;
+    background: var(--navy);
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .slide.active { opacity: 1; }
+
+  /* Placeholder campus images via Unsplash (university/campus themed) */
+  .slide:nth-child(1) { background-image: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1400&q=80'); }
+  .slide:nth-child(2) { background-image: url('https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=1400&q=80'); }
+  .slide:nth-child(3) { background-image: url('https://images.unsplash.com/photo-1562774053-701939374585?w=1400&q=80'); }
+  .slide:nth-child(4) { background-image: url('https://images.unsplash.com/photo-1568792923760-d70635a89fdc?w=1400&q=80'); }
+
+  .slide::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(13,31,60,0.45) 0%,
+      rgba(13,31,60,0.6) 60%,
+      rgba(13,31,60,0.82) 100%
+    );
+  }
+
+  .slide-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    padding: 3rem 4rem;
+    text-align: center;
+  }
+
+  .slide-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    padding: 5px 18px;
+    border-radius: 2px;
+    margin-bottom: 1.2rem;
+  }
+
+  .slide-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  }
+
+  .slide-subtitle {
+    color: rgba(255,255,255,0.82);
+    font-size: 1.05rem;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    margin-bottom: 1.8rem;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 0.88rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.85rem 2.2rem;
+    border-radius: 3px;
+    margin: 0 0.5rem;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .hero-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .hero-cta.outline {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid rgba(255,255,255,0.6);
+  }
+
+  .hero-cta.outline:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: var(--white);
+  }
+
+  .slide-dots {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    display: flex;
+    gap: 8px;
+  }
+
+  .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    border: none;
+  }
+
+  .dot.active { background: var(--gold); transform: scale(1.3); }
+
+  /* ── COUNTDOWN ── */
+  .countdown-bar {
+    background: var(--navy-light);
+    color: var(--white);
+    text-align: center;
+    padding: 1.2rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .countdown-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+
+  .countdown-units {
+    display: flex;
+    gap: 1.2rem;
+  }
+
+  .countdown-unit {
+    text-align: center;
+  }
+
+  .countdown-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1;
+    display: block;
+  }
+
+  .countdown-unit-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.55);
+    margin-top: 2px;
+  }
+
+  .countdown-sep {
+    font-size: 1.8rem;
+    color: var(--gold);
+    align-self: flex-start;
+    margin-top: 3px;
+  }
+
+  /* ── SECTION LAYOUT ── */
+  section { padding: 5rem 0; }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .section-divider {
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--gold);
+    margin: 1rem auto;
+    border-radius: 2px;
+  }
+
+  .section-lead {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 680px;
+    margin: 0 auto;
+    line-height: 1.75;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--cream); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+  }
+
+  .about-highlights {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+  }
+
+  .highlight-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--gold);
+    padding: 1.4rem 1.2rem;
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  .highlight-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+  }
+
+  .highlight-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 0.3rem;
+  }
+
+  /* ── SPEAKERS ── */
+  #speakers { background: var(--white); }
+
+  .speakers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+  }
+
+  .speaker-card {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: box-shadow 0.25s, transform 0.2s;
+    background: var(--white);
+  }
+
+  .speaker-card:hover {
+    box-shadow: 0 8px 32px rgba(13,31,60,0.1);
+    transform: translateY(-3px);
+  }
+
+  .speaker-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: var(--navy-light);
+    margin: 0 auto 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--gold-light);
+    border: 3px solid var(--gold);
+    overflow: hidden;
+  }
+
+  .speaker-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+
+  .speaker-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.2rem;
+  }
+
+  .speaker-title {
+    font-size: 0.82rem;
+    color: var(--gold);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.25rem;
+  }
+
+  .speaker-affil {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .speaker-topic {
+    margin-top: 0.9rem;
+    font-size: 0.85rem;
+    color: var(--text);
+    font-style: italic;
+    border-top: 1px solid var(--border);
+    padding-top: 0.8rem;
+  }
+
+  /* ── SCHEDULE ── */
+  #schedule { background: var(--cream); }
+
+  .schedule-tabs {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .tab-btn {
+    padding: 0.55rem 1.6rem;
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 30px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.04em;
+  }
+
+  .tab-btn:hover, .tab-btn.active {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: var(--white);
+  }
+
+  .schedule-panel { display: none; }
+  .schedule-panel.active { display: block; }
+
+  .schedule-item {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 1.5rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+
+  .schedule-time {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding-top: 2px;
+  }
+
+  .schedule-event-title {
+    font-weight: 600;
+    color: var(--navy);
+    font-size: 0.98rem;
+  }
+
+  .schedule-event-meta {
+    font-size: 0.84rem;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
+  }
+
+  .schedule-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 10px;
+    border-radius: 20px;
+    margin-top: 0.4rem;
+  }
+
+  .tag-keynote { background: #fdf0d8; color: #8a5e0a; }
+  .tag-paper { background: #e8f0fb; color: #1a4a8a; }
+  .tag-workshop { background: #e6f9f1; color: #0d6b45; }
+  .tag-break { background: #f2f2f2; color: #666; }
+  .tag-panel { background: #f2e8fb; color: #5a1a8a; }
+
+  /* ── CALL FOR PAPERS ── */
+  #papers { background: var(--white); }
+
+  .topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 3rem;
+  }
+
+  .topic-item {
+    display: flex;
+    gap: 0.9rem;
+    align-items: flex-start;
+    padding: 1.1rem 1.2rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--cream);
+  }
+
+  .topic-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--navy);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 0.9rem;
+  }
+
+  .topic-text {
+    font-size: 0.9rem;
+    color: var(--text);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .deadlines-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2.5rem;
+  }
+
+  .deadlines-table th {
+    background: var(--navy);
+    color: var(--white);
+    padding: 0.9rem 1.2rem;
+    text-align: left;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .deadlines-table td {
+    padding: 0.85rem 1.2rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.93rem;
+    color: var(--text);
+  }
+
+  .deadlines-table tr:nth-child(even) td { background: var(--cream); }
+
+  .deadlines-table .date-col {
+    color: var(--navy);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .submit-btn {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 0.88rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 2.5rem;
+    border-radius: 3px;
+    border: 2px solid var(--navy);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .submit-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+
+  /* ── VENUE ── */
+  #venue { background: var(--navy); color: var(--white); }
+
+  #venue .section-title { color: var(--white); }
+  #venue .section-tag { color: var(--gold-light); }
+  #venue .section-lead { color: rgba(255,255,255,0.7); }
+
+  .venue-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    margin-top: 1rem;
+  }
+
+  .venue-info-block {
+    margin-bottom: 2rem;
+  }
+
+  .venue-info-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+
+  .venue-info-value {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.6;
+  }
+
+  .venue-map-placeholder {
+    background: var(--navy-light);
+    border: 1px solid rgba(201,153,59,0.3);
+    border-radius: 8px;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.5);
+    gap: 0.7rem;
+  }
+
+  .venue-map-placeholder .map-icon {
+    font-size: 2.5rem;
+    color: var(--gold);
+  }
+
+  .venue-map-placeholder p {
+    font-size: 0.9rem;
+    text-align: center;
+    max-width: 220px;
+  }
+
+  .venue-map-placeholder a {
+    color: var(--gold-light);
+    text-decoration: underline;
+    font-size: 0.85rem;
+  }
+
+  /* ── COMMITTEE ── */
+  #committee { background: var(--cream); }
+
+  .committee-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+
+  .committee-card {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.1rem 1.2rem;
+  }
+
+  .committee-initials {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--gold-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .committee-name {
+    font-weight: 600;
+    color: var(--navy);
+    font-size: 0.95rem;
+    line-height: 1.3;
+  }
+
+  .committee-role {
+    font-size: 0.78rem;
+    color: var(--gold);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 0.15rem;
+  }
+
+  .committee-affil {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  /* ── REGISTRATION ── */
+  #registration { background: var(--white); }
+
+  .reg-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .reg-card {
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--white);
+    transition: box-shadow 0.25s;
+  }
+
+  .reg-card:hover { box-shadow: 0 8px 32px rgba(13,31,60,0.1); }
+
+  .reg-card.featured { border-color: var(--gold); border-width: 2px; }
+
+  .reg-header {
+    background: var(--navy);
+    padding: 1.5rem 1.5rem 1.2rem;
+    text-align: center;
+  }
+
+  .reg-card.featured .reg-header { background: var(--gold); }
+
+  .reg-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 12px;
+    border-radius: 20px;
+    margin-bottom: 0.8rem;
+  }
+
+  .reg-card.featured .reg-badge { background: var(--navy); color: var(--white); }
+
+  .reg-type {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+
+  .reg-card.featured .reg-type { color: var(--navy); }
+
+  .reg-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+
+  .reg-card.featured .reg-price { color: var(--navy); }
+  .reg-price-note { font-size: 0.78rem; color: rgba(255,255,255,0.6); }
+  .reg-card.featured .reg-price-note { color: rgba(13,31,60,0.6); }
+
+  .reg-body {
+    padding: 1.5rem;
+  }
+
+  .reg-features { list-style: none; }
+
+  .reg-features li {
+    padding: 0.4rem 0;
+    font-size: 0.88rem;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+  }
+
+  .reg-features li:last-child { border-bottom: none; }
+
+  .reg-features .check { color: var(--gold); font-weight: 700; }
+
+  .reg-btn {
+    display: block;
+    text-align: center;
+    margin-top: 1.2rem;
+    padding: 0.75rem;
+    background: var(--navy);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .reg-btn:hover { background: var(--gold); color: var(--navy); }
+  .reg-card.featured .reg-btn { background: var(--gold); color: var(--navy); }
+  .reg-card.featured .reg-btn:hover { background: var(--navy); color: var(--white); }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--navy-light); color: var(--white); }
+
+  #contact .section-title { color: var(--white); }
+  #contact .section-tag { color: var(--gold-light); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contact-info-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: 1.8rem;
+  }
+
+  .contact-icon {
+    width: 42px;
+    height: 42px;
+    background: rgba(201,153,59,0.2);
+    border: 1px solid rgba(201,153,59,0.4);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.1rem;
+  }
+
+  .contact-info-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+
+  .contact-info-value {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+  }
+
+  .contact-form input,
+  .contact-form textarea,
+  .contact-form select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    color: var(--white);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.93rem;
+    margin-bottom: 1rem;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder { color: rgba(255,255,255,0.4); }
+
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    border-color: var(--gold);
+  }
+
+  .contact-form textarea { resize: vertical; min-height: 130px; }
+
+  .contact-form button {
+    padding: 0.85rem 2.2rem;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .contact-form button:hover { background: var(--gold-light); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    border-top: 3px solid var(--gold);
+    padding: 3rem 2rem 2rem;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--gold-light);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-tagline {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 1.8rem;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold-light); }
+
+  .footer-copy {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* ── BACK TO TOP ── */
+  #back-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 999;
+    width: 46px;
+    height: 46px;
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    transition: background 0.2s, transform 0.2s;
+    text-decoration: none;
+  }
+
+  #back-top:hover {
+    background: var(--navy);
+    color: var(--gold);
+    transform: translateY(-3px);
+  }
+
+  #back-top.visible { display: flex; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .logo-bar { padding: 1rem 1.2rem; }
+    .logo-conf-name { font-size: 0.95rem; }
+    .nav-title { font-size: 0.8rem; }
+    .nav-conf-badge { display: none; }
+    .slideshow { height: 420px; }
+    .slide-content { padding: 2rem 1.5rem; }
+    .about-grid, .venue-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .about-highlights { grid-template-columns: 1fr 1fr; }
+    section { padding: 3.5rem 0; }
+    .schedule-item { grid-template-columns: 100px 1fr; gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════ LOGO BAR ═══════════════════════════════ -->
+<div class="logo-bar" id="top">
+  <div class="logo-placeholder">
+    <img src="https://i.ibb.co/JWSghJkJ/conference-logo.jpg" style="width:100%; height:100%; object-fit:contain;"/>
+  </div>
+  <div class="logo-bar-text">
+    <div class="logo-conf-name">International Conference on Material Insights<br>and Intelligent Modelling</div>
+    <div style="margin-top:0.4rem;">
+      <span class="logo-conf-short">ICMIIM 2026</span>
+      <span class="logo-conf-meta">9<sup>th</sup> - 10<sup>th</sup> December · Delhi, India</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════ NAV ════════════════════════════════ -->
+<nav>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="nav-dropdown" id="nav-dropdown">
+    <a href="#about"        onclick="closeMenu()"><span class="nav-num">01</span> About the Conference</a>
+    <a href="#speakers"     onclick="closeMenu()"><span class="nav-num">02</span> Keynote Speakers</a>
+    <a href="#schedule"     onclick="closeMenu()"><span class="nav-num">03</span> Programme Schedule</a>
+    <a href="#papers"       onclick="closeMenu()"><span class="nav-num">04</span> Call for Papers</a>
+    <a href="#venue"        onclick="closeMenu()"><span class="nav-num">05</span> Venue</a>
+    <a href="#committee"    onclick="closeMenu()"><span class="nav-num">06</span> Organising Committee</a>
+    <a href="#registration" onclick="closeMenu()"><span class="nav-num">07</span> Registration</a>
+    <a href="#contact"      onclick="closeMenu()"><span class="nav-num">08</span> Contact Us</a>
+  </div>
+
+  <span class="nav-title">ICMIIM 2026 — Material Insights &amp; Intelligent Modelling</span>
+</nav>
+
+<!-- ══════════════════════════ HERO SLIDESHOW ═══════════════════════════ -->
+<div class="slideshow" id="top-hero">
+  <div class="slide active"></div>
+  <div class="slide"></div>
+  <div class="slide"></div>
+  <div class="slide"></div>
+
+  <div class="slide-content">
+    <div class="slide-badge">9<sup>th</sup> - 10<sup>th</sup> DECEMBER 2026 &nbsp;·&nbsp; DELHI, INDIA</div>
+    <h1 class="slide-title">International Conference on<br>Material Insights &amp; Intelligent Modelling</h1>
+    <p class="slide-subtitle">ICMIIM 2026 — Hosted by [Your University Name]</p>
+    <a href="#registration" class="hero-cta">Register Now</a>
+    <a href="#papers" class="hero-cta outline">Submit Paper</a>
+  </div>
+
+  <div class="slide-dots">
+    <button class="dot active" onclick="goSlide(0)" aria-label="Slide 1"></button>
+    <button class="dot" onclick="goSlide(1)" aria-label="Slide 2"></button>
+    <button class="dot" onclick="goSlide(2)" aria-label="Slide 3"></button>
+    <button class="dot" onclick="goSlide(3)" aria-label="Slide 4"></button>
+  </div>
+</div>
+
+<!-- ══════════════════════════ COUNTDOWN ══════════════════════════════ -->
+<div class="countdown-bar">
+  <span class="countdown-label">Conference begins in</span>
+  <div class="countdown-units">
+    <div class="countdown-unit">
+      <span class="countdown-number" id="cd-days">00</span>
+      <span class="countdown-unit-label">Days</span>
+    </div>
+    <span class="countdown-sep">:</span>
+    <div class="countdown-unit">
+      <span class="countdown-number" id="cd-hours">00</span>
+      <span class="countdown-unit-label">Hours</span>
+    </div>
+    <span class="countdown-sep">:</span>
+    <div class="countdown-unit">
+      <span class="countdown-number" id="cd-mins">00</span>
+      <span class="countdown-unit-label">Mins</span>
+    </div>
+    <span class="countdown-sep">:</span>
+    <div class="countdown-unit">
+      <span class="countdown-number" id="cd-secs">00</span>
+      <span class="countdown-unit-label">Secs</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════ ABOUT ══════════════════════════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">About the Conference</span>
+      <h2 class="section-title">A Premier Forum on Materials &amp; AI Modelling</h2>
+      <span class="section-divider"></span>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>The International Conference on Material Insights and Intelligent Modelling (ICMIIM 2026) is a premier interdisciplinary gathering bringing together researchers, engineers, and industry experts working at the intersection of materials science, computational modelling, and artificial intelligence.</p>
+        <p>Hosted by <strong>[Your University Name]</strong>, ICMIIM 2026 provides a vibrant platform for exchanging breakthrough ideas in advanced materials characterisation, data-driven discovery, and intelligent simulation techniques.</p>
+        <p>This year's theme, <strong>"Bridging Material Science and Machine Intelligence"</strong>, encourages contributions spanning experimental materials research, AI/ML-based modelling, multiscale simulations, and smart manufacturing.</p>
+        <p>All accepted papers will be published in conference proceedings with an ISBN and considered for indexing in leading databases including Scopus and Web of Science.</p>
+      </div>
+      <div class="about-highlights">
+        <div class="highlight-card">
+          <div class="highlight-number">50+</div>
+          <div class="highlight-desc">Countries Represented</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-number">300+</div>
+          <div class="highlight-desc">Expected Participants</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-number">20+</div>
+          <div class="highlight-desc">Keynote Speakers</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-number">8</div>
+          <div class="highlight-desc">Parallel Tracks</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-number">3</div>
+          <div class="highlight-desc">Conference Days</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-number">ISO</div>
+          <div class="highlight-desc">Indexed Proceedings</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ SPEAKERS ═══════════════════════════════ -->
+<section id="speakers">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Keynote Speakers</span>
+      <h2 class="section-title">Distinguished Global Voices</h2>
+      <span class="section-divider"></span>
+      <p class="section-lead">World-renowned experts sharing their insights across science, technology, policy, and innovation.</p>
+    </div>
+    <div class="speakers-grid">
+
+      <div class="speaker-card">
+        <div class="speaker-avatar">AK</div>
+        <div class="speaker-name">Prof. Ananya Kumar</div>
+        <div class="speaker-title">Keynote Speaker</div>
+        <div class="speaker-affil">MIT, Cambridge, USA</div>
+        <div class="speaker-topic">"AI and the Future of Human-Machine Collaboration"</div>
+      </div>
+
+      <div class="speaker-card">
+        <div class="speaker-avatar">JM</div>
+        <div class="speaker-name">Dr. Jean-Michel Blanc</div>
+        <div class="speaker-title">Invited Speaker</div>
+        <div class="speaker-affil">INRIA, Paris, France</div>
+        <div class="speaker-topic">"Sustainable Computing: Reducing the Carbon Footprint of AI"</div>
+      </div>
+
+      <div class="speaker-card">
+        <div class="speaker-avatar">LZ</div>
+        <div class="speaker-name">Prof. Li Zhang</div>
+        <div class="speaker-title">Invited Speaker</div>
+        <div class="speaker-affil">Tsinghua University, China</div>
+        <div class="speaker-topic">"Smart Cities: Data-Driven Governance and Urban Planning"</div>
+      </div>
+
+      <div class="speaker-card">
+        <div class="speaker-avatar">PR</div>
+        <div class="speaker-name">Dr. Priya Ramachandran</div>
+        <div class="speaker-title">Panelist</div>
+        <div class="speaker-affil">IISc Bangalore, India</div>
+        <div class="speaker-topic">"Biotechnology and Global Health Equity"</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ SCHEDULE ═══════════════════════════════ -->
+<section id="schedule">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Programme</span>
+      <h2 class="section-title">Conference Schedule</h2>
+      <span class="section-divider"></span>
+      <p class="section-lead">Three days of keynotes, paper presentations, workshops, and networking events.</p>
+    </div>
+
+    <div class="schedule-tabs">
+      <button class="tab-btn active" onclick="showTab('day1', this)">Day 1 · Dec 9</button>
+      <button class="tab-btn" onclick="showTab('day2', this)">Day 2 · Dec 10</button>
+    </div>
+
+    <div id="day1" class="schedule-panel active">
+      <div class="schedule-item">
+        <div class="schedule-time">08:00 – 09:00</div>
+        <div><div class="schedule-event-title">Registration &amp; Welcome Coffee</div><div class="schedule-event-meta">Lobby, Conference Centre</div><span class="schedule-tag tag-break">Administrative</span></div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">09:00 – 09:30</div>
+        <div><div class="schedule-event-title">Inaugural Ceremony</div><div class="schedule-event-meta">Chief Guest Address &amp; Lamp Lighting — Main Auditorium</div><span class="schedule-tag tag-keynote">Ceremony</span></div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">09:30 – 10:30</div>
+        <div><div class="schedule-event-title">Keynote: AI and the Future of Human-Machine Collaboration</div><div class="schedule-event-meta">Prof. Ananya Kumar — Main Auditorium</div><span class="schedule-tag tag-keynote">Keynote</span></div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">10:30 – 11:00</div>
+        <div><div class="schedule-event-title">Tea / Networking Break</div><div class="schedule-event-meta">Foyer Area</div><span class="schedule-tag tag-break">Break</span></div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">11:00 – 13:00</div>
+        <div><div class="schedule-event-title">Paper Presentations — Track A &amp; B (Parallel)</div><div class="schedule-event-meta">Hall A: Technology &nbsp;|&nbsp; Hall B: Sustainability</div><span class="schedule-tag tag-paper">Paper Session</span></div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">13:00 – 14:00</div>
+        <div><div class="schedule-event-title">Lunch Break</div><div class="schedule-event-meta">University Cafeteria</div><span class="schedule-tag tag-break">Break</span></div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">14:00 – 16:00</div>
+        <div><div class="schedule-event-title">Workshop: Research Methodology in the Digital Age</div><div class="schedule-event-meta">Seminar Room 1 (Limited Seats)</div><span class="schedule-tag tag-workshop">Workshop</span></div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">16:00 – 17:30</div>
+        <div><div class="schedule-event-title">Panel Discussion: Industry–Academia Partnerships</div><div class="schedule-event-meta">Main Auditorium</div><span class="schedule-tag tag-panel">Panel</span></div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">19:00 – 21:00</div>
+        <div><div class="schedule-event-title">Welcome Dinner &amp; Cultural Programme</div><div class="schedule-event-meta">University Convocation Hall — By Invitation</div><span class="schedule-tag tag-keynote">Social</span></div>
+      </div>
+    </div>
+
+    <div id="day2" class="schedule-panel">
+      <div class="schedule-item">
+        <div class="schedule-time">09:00 – 10:00</div>
+        <div><div class="schedule-event-title">Keynote: Sustainable Computing</div><div class="schedule-event-meta">Dr. Jean-Michel Blanc — Main Auditorium</div><span class="schedule-tag tag-keynote">Keynote</span></div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">10:00 – 10:30</div>
+        <div><div class="schedule-event-title">Tea / Networking Break</div><div class="schedule-event-meta">Foyer Area</div><span class="schedule-tag tag-break">Break</span></div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">10:30 – 13:00</div>
+        <div><div class="schedule-event-title">Paper Presentations — Track C &amp; D (Parallel)</div><div class="schedule-event-meta">Hall A: Policy &amp; Governance &nbsp;|&nbsp; Hall B: Healthcare</div><span class="schedule-tag tag-paper">Paper Session</span></div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">13:00 – 14:00</div>
+        <div><div class="schedule-event-title">Lunch Break</div><div class="schedule-event-meta">University Cafeteria</div><span class="schedule-tag tag-break">Break</span></div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">14:00 – 15:30</div>
+        <div><div class="schedule-event-title">Invited Talk: Smart Cities &amp; Urban Planning</div><div class="schedule-event-meta">Prof. Li Zhang — Main Auditorium</div><span class="schedule-tag tag-keynote">Invited Talk</span></div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">15:30 – 17:30</div>
+        <div><div class="schedule-event-title">Poster Session &amp; Exhibition</div><div class="schedule-event-meta">Conference Hall Lobby</div><span class="schedule-tag tag-paper">Poster</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════ CALL FOR PAPERS ════════════════════════ -->
+<section id="papers">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Call for Papers</span>
+      <h2 class="section-title">Submit Your Research</h2>
+      <span class="section-divider"></span>
+      <p class="section-lead">We invite original, unpublished research contributions in all areas related to the conference theme. Both full papers (8–12 pages) and extended abstracts (2–4 pages) are welcome.</p>
+    </div>
+
+    <div class="topics-grid">
+      <div class="topic-item"><div class="topic-icon">🔬</div><div class="topic-text">Artificial Intelligence &amp; Machine Learning</div></div>
+      <div class="topic-item"><div class="topic-icon">🌱</div><div class="topic-text">Sustainable Development &amp; Environment</div></div>
+      <div class="topic-item"><div class="topic-icon">🏙️</div><div class="topic-text">Smart Cities &amp; Urban Technology</div></div>
+      <div class="topic-item"><div class="topic-icon">💊</div><div class="topic-text">Biotechnology &amp; Healthcare Innovation</div></div>
+      <div class="topic-item"><div class="topic-icon">📡</div><div class="topic-text">Communication Networks &amp; IoT</div></div>
+      <div class="topic-item"><div class="topic-icon">⚖️</div><div class="topic-text">Policy, Ethics &amp; Digital Governance</div></div>
+      <div class="topic-item"><div class="topic-icon">🎓</div><div class="topic-text">Education Technology &amp; Learning Sciences</div></div>
+      <div class="topic-item"><div class="topic-icon">💰</div><div class="topic-text">FinTech &amp; Economic Systems</div></div>
+      <div class="topic-item"><div class="topic-icon">⚙️</div><div class="topic-text">Mechanical &amp; Structural Engineering</div></div>
+      <div class="topic-item"><div class="topic-icon">🧬</div><div class="topic-text">Bioinformatics &amp; Computational Biology</div></div>
+      <div class="topic-item"><div class="topic-icon">🔋</div><div class="topic-text">Renewable Energy &amp; Clean Technology</div></div>
+      <div class="topic-item"><div class="topic-icon">🤝</div><div class="topic-text">Social Sciences &amp; Cross-disciplinary Research</div></div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--navy);margin-bottom:1.2rem;">Important Dates</h3>
+    <table class="deadlines-table">
+      <thead>
+        <tr>
+          <th>Milestone</th>
+          <th>Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Abstract Submission Opens</td>
+          <td class="date-col">1 June 2025</td>
+          <td><span class="schedule-tag tag-workshop" style="margin:0;">Open</span></td>
+        </tr>
+        <tr>
+          <td>Full Paper Submission Deadline</td>
+          <td class="date-col">15 July 2025</td>
+          <td><span class="schedule-tag tag-paper" style="margin:0;">Open</span></td>
+        </tr>
+        <tr>
+          <td>Notification of Acceptance</td>
+          <td class="date-col">15 August 2025</td>
+          <td><span class="schedule-tag tag-break" style="margin:0;">Upcoming</span></td>
+        </tr>
+        <tr>
+          <td>Camera-Ready Submission</td>
+          <td class="date-col">1 September 2025</td>
+          <td><span class="schedule-tag tag-break" style="margin:0;">Upcoming</span></td>
+        </tr>
+        <tr>
+          <td>Early Bird Registration Closes</td>
+          <td class="date-col">15 September 2025</td>
+          <td><span class="schedule-tag tag-break" style="margin:0;">Upcoming</span></td>
+        </tr>
+        <tr>
+          <td>Conference Dates</td>
+          <td class="date-col">14–16 October 2025</td>
+          <td><span class="schedule-tag tag-keynote" style="margin:0;">Main Event</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="#" class="submit-btn">Submit Your Paper →</a>
+      <p style="margin-top:1rem;font-size:0.85rem;color:var(--text-muted);">Papers must follow the IEEE/Springer template. For author guidelines, <a href="#" style="color:var(--navy);font-weight:600;">download the author kit</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ VENUE ══════════════════════════════════ -->
+<section id="venue">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Venue</span>
+      <h2 class="section-title">Where We Meet</h2>
+      <span class="section-divider"></span>
+      <p class="section-lead">Hosted on the beautiful campus of SRM Institute of Science and Technology, Delhi - NCR Campus, Ghaziabad</p>
+    </div>
+    <div class="venue-grid">
+      <div>
+        <div class="venue-info-block">
+          <div class="venue-info-label">📍 Conference Venue</div>
+          <div class="venue-info-value">SRM Institute of Science and Technology<br>Peter F Drucker Hall<br></div>
+        </div>
+        <div class="venue-info-block">
+          <div class="venue-info-label">✈️ Nearest Airport</div>
+          <div class="venue-info-value">Indira Gandhi International Airport (DEL)</div>
+        </div>
+        <div class="venue-info-block">
+          <div class="venue-info-label">🚇 By Metro</div>
+          <div class="venue-info-value">Modinagar South on the Rapid Rail Line<br>10 - minute by auto-rickshaw from gate</div>
+        </div>
+        <div class="venue-info-block">
+          <div class="venue-info-label">🏨 Accommodation</div>
+          <div class="venue-info-value">Guest house accommodation available on campus.<br>A list of partner hotels has been arranged at discounted rates for delegates.</div>
+        </div>
+      </div>
+      <div class="venue-map-placeholder"> 
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3496.3888047271566!2d77.53476587509853!3d28.797485275575056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cf51f5aadb701%3A0x39add03eb3926d26!2sSRM%20Institute%20of%20Science%20and%20Technology%20Delhi%20NCR%20Campus!5e0!3m2!1sen!2sin!4v1778840716891!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ COMMITTEE ══════════════════════════════ -->
+<section id="committee">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Organising Committee</span>
+      <h2 class="section-title">The Team Behind ICRI 2025</h2>
+      <span class="section-divider"></span>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.1rem;margin-bottom:1.2rem;padding-bottom:0.5rem;border-bottom:2px solid var(--gold);">General Chairs</h3>
+    <div class="committee-grid" style="margin-bottom:2rem;">
+      <div class="committee-card">
+        <div class="committee-initials">RS</div>
+        <div>
+          <div class="committee-name">Prof. Rajesh Sharma</div>
+          <div class="committee-role">General Chair</div>
+          <div class="committee-affil">[Your University Name]</div>
+        </div>
+      </div>
+      <div class="committee-card">
+        <div class="committee-initials">MM</div>
+        <div>
+          <div class="committee-name">Prof. Meera Mathur</div>
+          <div class="committee-role">Co-General Chair</div>
+          <div class="committee-affil">[Partner University]</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.1rem;margin-bottom:1.2rem;padding-bottom:0.5rem;border-bottom:2px solid var(--gold);">Programme Committee</h3>
+    <div class="committee-grid" style="margin-bottom:2rem;">
+      <div class="committee-card">
+        <div class="committee-initials">AV</div>
+        <div><div class="committee-name">Dr. Arvind Verma</div><div class="committee-role">Programme Chair</div><div class="committee-affil">[University]</div></div>
+      </div>
+      <div class="committee-card">
+        <div class="committee-initials">SK</div>
+        <div><div class="committee-name">Dr. Sunita Kapoor</div><div class="committee-role">Programme Co-Chair</div><div class="committee-affil">[University]</div></div>
+      </div>
+      <div class="committee-card">
+        <div class="committee-initials">PJ</div>
+        <div><div class="committee-name">Prof. Pradeep Joshi</div><div class="committee-role">Track Chair – AI</div><div class="committee-affil">[University]</div></div>
+      </div>
+      <div class="committee-card">
+        <div class="committee-initials">NG</div>
+        <div><div class="committee-name">Dr. Nisha Gupta</div><div class="committee-role">Track Chair – Sustainability</div><div class="committee-affil">[University]</div></div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;color:var(--navy);font-size:1.1rem;margin-bottom:1.2rem;padding-bottom:0.5rem;border-bottom:2px solid var(--gold);">Local Organising Committee</h3>
+    <div class="committee-grid">
+      <div class="committee-card">
+        <div class="committee-initials">VB</div>
+        <div><div class="committee-name">Dr. Vikram Bose</div><div class="committee-role">Logistics Chair</div><div class="committee-affil">[University]</div></div>
+      </div>
+      <div class="committee-card">
+        <div class="committee-initials">AS</div>
+        <div><div class="committee-name">Ms. Anita Singh</div><div class="committee-role">Treasurer</div><div class="committee-affil">[University]</div></div>
+      </div>
+      <div class="committee-card">
+        <div class="committee-initials">KM</div>
+        <div><div class="committee-name">Mr. Kartik Mehra</div><div class="committee-role">Web &amp; Publicity</div><div class="committee-affil">[University]</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ REGISTRATION ═══════════════════════════ -->
+<section id="registration">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Registration</span>
+      <h2 class="section-title">Secure Your Place</h2>
+      <span class="section-divider"></span>
+      <p class="section-lead">Early bird rates available until 15 September 2025. All fees include conference kit, meals, and access to all sessions.</p>
+    </div>
+
+    <div class="reg-grid">
+      <div class="reg-card">
+        <div class="reg-header">
+          <div class="reg-badge">Student</div>
+          <div class="reg-type">Student Delegate</div>
+          <div class="reg-price">₹3,000</div>
+          <div class="reg-price-note">Early Bird / ₹4,000 after Sept 15</div>
+        </div>
+        <div class="reg-body">
+          <ul class="reg-features">
+            <li><span class="check">✓</span> All sessions &amp; workshops</li>
+            <li><span class="check">✓</span> Conference kit &amp; bag</li>
+            <li><span class="check">✓</span> Lunch &amp; tea breaks</li>
+            <li><span class="check">✓</span> E-certificate of participation</li>
+            <li><span class="check">✗</span> <span style="color:var(--text-muted)">Welcome dinner</span></li>
+          </ul>
+          <a href="#contact" class="reg-btn">Register Now</a>
+        </div>
+      </div>
+
+      <div class="reg-card featured">
+        <div class="reg-header">
+          <div class="reg-badge">Most Popular</div>
+          <div class="reg-type">Academic / Faculty</div>
+          <div class="reg-price">₹6,000</div>
+          <div class="reg-price-note">Early Bird / ₹8,000 after Sept 15</div>
+        </div>
+        <div class="reg-body">
+          <ul class="reg-features">
+            <li><span class="check">✓</span> All sessions &amp; workshops</li>
+            <li><span class="check">✓</span> Conference kit &amp; bag</li>
+            <li><span class="check">✓</span> Lunch &amp; tea breaks</li>
+            <li><span class="check">✓</span> Welcome dinner invitation</li>
+            <li><span class="check">✓</span> Printed &amp; e-certificate</li>
+          </ul>
+          <a href="#contact" class="reg-btn">Register Now</a>
+        </div>
+      </div>
+
+      <div class="reg-card">
+        <div class="reg-header">
+          <div class="reg-badge">Industry</div>
+          <div class="reg-type">Industry Professional</div>
+          <div class="reg-price">₹10,000</div>
+          <div class="reg-price-note">Early Bird / ₹12,000 after Sept 15</div>
+        </div>
+        <div class="reg-body">
+          <ul class="reg-features">
+            <li><span class="check">✓</span> All sessions &amp; workshops</li>
+            <li><span class="check">✓</span> Premium conference kit</li>
+            <li><span class="check">✓</span> All meals included</li>
+            <li><span class="check">✓</span> Welcome dinner invitation</li>
+            <li><span class="check">✓</span> Exhibition space (2 sq m)</li>
+          </ul>
+          <a href="#contact" class="reg-btn">Register Now</a>
+        </div>
+      </div>
+
+      <div class="reg-card">
+        <div class="reg-header">
+          <div class="reg-badge">International</div>
+          <div class="reg-type">International Delegate</div>
+          <div class="reg-price">$150</div>
+          <div class="reg-price-note">Early Bird / $200 after Sept 15</div>
+        </div>
+        <div class="reg-body">
+          <ul class="reg-features">
+            <li><span class="check">✓</span> All sessions &amp; workshops</li>
+            <li><span class="check">✓</span> Premium conference kit</li>
+            <li><span class="check">✓</span> All meals included</li>
+            <li><span class="check">✓</span> Welcome dinner invitation</li>
+            <li><span class="check">✓</span> Virtual attendance option</li>
+          </ul>
+          <a href="#contact" class="reg-btn">Register Now</a>
+        </div>
+      </div>
+    </div>
+
+    <p style="text-align:center;font-size:0.85rem;color:var(--text-muted);">Group discounts available for 5+ registrations from the same institution. Contact us for details.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════ CONTACT ════════════════════════════════ -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Get in Touch</span>
+      <h2 class="section-title">Contact Us</h2>
+      <span class="section-divider"></span>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info-item">
+          <div class="contact-icon">📧</div>
+          <div>
+            <div class="contact-info-label">Email</div>
+            <div class="contact-info-value">icri2025@university.ac.in<br>papers@icri2025.org</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-info-label">Phone</div>
+            <div class="contact-info-value">+91 11 XXXX XXXX (Office)<br>+91 9XXXXXXXXX (Convenor)</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">🏛️</div>
+          <div>
+            <div class="contact-info-label">Address</div>
+            <div class="contact-info-value">Conference Secretariat<br>[Department Name]<br>[University Name], [Campus]<br>New Delhi – 110XXX, India</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <div class="contact-info-label">Office Hours</div>
+            <div class="contact-info-value">Monday – Friday: 9:00 AM – 5:00 PM IST<br>We aim to respond within 2 working days</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <input type="text" placeholder="Your Full Name" />
+        <input type="email" placeholder="Email Address" />
+        <input type="text" placeholder="Institution / Organisation" />
+        <select style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.2);border-radius:4px;color:rgba(255,255,255,0.8);padding:0.8rem 1rem;width:100%;margin-bottom:1rem;font-family:'Source Sans 3',sans-serif;font-size:0.93rem;">
+          <option value="" style="color:#333;">Subject of Enquiry</option>
+          <option style="color:#333;">Paper Submission</option>
+          <option style="color:#333;">Registration</option>
+          <option style="color:#333;">Sponsorship / Exhibition</option>
+          <option style="color:#333;">Travel &amp; Accommodation</option>
+          <option style="color:#333;">General Enquiry</option>
+        </select>
+        <textarea placeholder="Your message…"></textarea>
+        <button type="button">Send Message →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ FOOTER ════════════════════════════════ -->
+<footer>
+  <div class="footer-logo">ICMIIM 2026</div>
+  <div class="footer-tagline">International Conference on Material Insights and Intelligent Modelling · [City], India · 2026</div>
+  <ul class="footer-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#speakers">Speakers</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#papers">Call for Papers</a></li>
+    <li><a href="#venue">Venue</a></li>
+    <li><a href="#registration">Register</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="footer-copy">&copy; 2026 [Your University Name]. All rights reserved. Designed for ICMIIM 2026.</div>
+</footer>
+
+<!-- ══════════════════════════ BACK TO TOP ════════════════════════════ -->
+<a href="#top" id="back-top" title="Back to top">&#8679;</a>
+
+<!-- ══════════════════════════ SCRIPTS ═══════════════════════════════ -->
+<script>
+  /* ── Hamburger Menu ── */
+  function toggleMenu() {
+    const dd = document.getElementById('nav-dropdown');
+    const hb = document.getElementById('hamburger');
+    dd.classList.toggle('open');
+    hb.classList.toggle('open');
+  }
+
+  function closeMenu() {
+    document.getElementById('nav-dropdown').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  }
+
+  /* Close menu when clicking outside */
+  document.addEventListener('click', function(e) {
+    const dd = document.getElementById('nav-dropdown');
+    const hb = document.getElementById('hamburger');
+    if (!dd.contains(e.target) && !hb.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  /* Smooth scroll for all anchor links */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const navH = document.querySelector('nav').offsetHeight;
+        const top = target.getBoundingClientRect().top + window.scrollY - navH - 8;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  /* Highlight active nav link on scroll */
+  const sections = document.querySelectorAll('section[id], div[id="top"]');
+  const navLinks = document.querySelectorAll('.nav-dropdown a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 80) current = sec.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.remove('active-link');
+      if (a.getAttribute('href') === '#' + current) a.classList.add('active-link');
+    });
+  });
+
+  /* Slideshow */
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+
+  function goSlide(n) {
+    slides[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
+    currentSlide = n;
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+  }
+
+  setInterval(() => {
+    goSlide((currentSlide + 1) % slides.length);
+  }, 4500);
+
+  /* Schedule Tabs */
+  function showTab(id, btn) {
+    document.querySelectorAll('.schedule-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  /* Countdown — update target date when confirmed */
+  function updateCountdown() {
+    const target = new Date('2026-12-09T09:00:00+05:30');
+    const now = new Date();
+    const diff = target - now;
+    if (diff <= 0) {
+      ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => document.getElementById(id).textContent = '00');
+      return;
+    }
+    const days  = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins  = Math.floor((diff % 3600000) / 60000);
+    const secs  = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-days').textContent  = String(days).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+    document.getElementById('cd-mins').textContent  = String(mins).padStart(2,'0');
+    document.getElementById('cd-secs').textContent  = String(secs).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  /* Back to top button */
+  const btn = document.getElementById('back-top');
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 500);
+  });
+</script>
+</body>
+</html>
